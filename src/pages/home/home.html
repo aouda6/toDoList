@@ -17,6 +17,10 @@
   <br>
 
   <ion-list>
+    <!-- Retrieves the collection items from the component and loops over all its elements to display
+    the item's name -->
+    <!-- The loop also includes a button for deleting items and a checklist of the items -->
+    <!-- NgClass provides different styles depending on if the checkbox is clicked or not -->
     <ion-item *ngFor="let item of arrData; let i = index"
               [ngClass]="(arrData[i].done == 1)? 'complete': 'notComplete'">
       <ion-label>
@@ -29,13 +33,18 @@
       <button ion-button icon-only item-right clear (click)='deleteItem(i)'>
         <ion-icon name="close-circle"></ion-icon>
       </button>
-
     </ion-item>
+
     <br>
 
-    <button ion-button item-right icon-left (click)="SelectAll()">
+    <!-- This displays different text depending on the selection -->
+    <button ion-button icon-left (click)="selection(true)" *ngIf="selected">
       <ion-icon name="checkbox"></ion-icon>
       Select All
+    </button>
+    <button ion-button icon-left (click)="selection(false)" *ngIf="!selected">
+      <ion-icon name="checkbox"></ion-icon>
+      Deselect All
     </button>
     <button ion-button icon-left color="danger" (click)="deleteAll()">
       <ion-icon name="trash"></ion-icon>
