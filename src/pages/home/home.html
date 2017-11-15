@@ -13,22 +13,34 @@
   <div text-right>
     <button (click)="btnAddClicked()" ion-button>Add</button>
   </div>
+
   <br>
+
   <ion-list>
-    <ion-item *ngFor="let item of arrData; let i = index">
+    <ion-item *ngFor="let item of arrData; let i = index"
+              [ngClass]="(arrData[i].done == 1)? 'complete': 'notComplete'">
       <ion-label>
         <div text-wrap>
           <h2>
             {{item.name}}
           </h2></div>
       </ion-label>
-      <ion-checkbox class="change" [(ngModel)]="arrData[i].done" (click)="changeCrossOut(i)"></ion-checkbox>
-      <button ion-button icon-only item-right clear (click)='delete(i)'>
+      <ion-checkbox [(ngModel)]="arrData[i].done" (click)="changeCrossOut(i)"></ion-checkbox>
+      <button ion-button icon-only item-right clear (click)='deleteItem(i)'>
         <ion-icon name="close-circle"></ion-icon>
       </button>
 
     </ion-item>
-  </ion-list>
+    <br>
 
+    <button ion-button item-right icon-left (click)="SelectAll()">
+      <ion-icon name="checkbox"></ion-icon>
+      Select All
+    </button>
+    <button ion-button icon-left color="danger" (click)="deleteAll()">
+      <ion-icon name="trash"></ion-icon>
+      Delete All
+    </button>
+  </ion-list>
 
 </ion-content>

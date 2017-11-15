@@ -1,8 +1,10 @@
 page-home {
-
-  .change {
+  .complete {
+    color: #488aff;
     text-decoration: line-through;
-    color: #2ec95c;
+  }
+  .notComplete {
+    color: #2d2d2d;
   }
 
 }
